@@ -84,6 +84,15 @@ function updateProgress(e) {
 
 }
 
+// Set Progress bar
+function setProgress(e) {
+	const width = this.clientWidth;
+	const clickX = e.offsetX;
+	const duration = audio.duration;
+	
+	audio.currentTime = (clickX / width) * duration;
+}
+
 // Event listeners
 playBtn.addEventListener('click', () => {
 	const isPlaying = musicContainer.classList.contains('play');
@@ -101,3 +110,6 @@ nextBtn.addEventListener('click', nextSong);
 
 // Time/Song update
 audio.addEventListener('timeupdate', updateProgress);
+
+// Click on progress bar
+progressContainer.addEventListener('click', setProgress);
